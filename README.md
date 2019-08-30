@@ -7,9 +7,9 @@ and model** data.
 ## Secrets
 
 This repo uses [transcrypt](https://github.com/elasticdog/transcrypt) to transparently
-encrypt/decrypt sensitive information. All secrets used to talk to the rest of
-the world (**Slack, Claudant, Google Sheet, Google BigQuery, S3, GCS,** ...) are
-stored in `/secrets`. During remote deployment in a node/cluster, the decryption
+encrypt/decrypt sensitive information with **aes-256-cbc** cypher (test password is `LorisMarini`). All the secrets
+needed to talk to the rest of the world (**Slack, Claudant, Google Sheet, Google BigQuery, S3, GCS,** ...)
+are stored in `/secrets`. During remote deployment in a node/cluster, the decryption
 key can be read from an authenticated bucket (e.g. Amazon S3). Transcrypt is included
 as a submodule, so to clone the repo use:
 
