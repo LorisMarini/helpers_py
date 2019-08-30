@@ -1,0 +1,3 @@
+[run]
+omit = skepsi/_deprecated/*,tests/*,*__init__.py,skepsi/*/*etl_id*
+data_file = /skepsi/tests/.coverage

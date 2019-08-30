@@ -1,0 +1,7 @@
+# Contains paths that should not be part of the context for the Docker Deamon
+
+# PostgreSQL data
+./postgres-data
+
+# Pycharm stuff
+./.idea
