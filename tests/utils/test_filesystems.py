@@ -1,5 +1,5 @@
-from skepsi.utils.utils import *
-from skepsi.utils.imports import *
+from helpers.utils import *
+from helpers.imports import *
 
 
 def test_buckets_connection():
@@ -13,10 +13,10 @@ def test_buckets_connection():
         assert filesystem.ls(bucket.name)
 
 
-# filesystem_for_path(path)
+# TODO filesystem_for_path(path)
 
-# file_paginate(file_object, chunk_size=10)
+# TODO file_paginate(file_object, chunk_size=10)
 
-# file_last_line(file_name)
+# TODO file_last_line(file_name)
 
-# wc(filename)
+# TODO wc(filename)

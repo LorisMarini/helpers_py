@@ -1,4 +1,4 @@
-from skepsi.utils.utils import *
+from helpers.utils import *
 
 
 def get_skepsi_commit_info():

@@ -1,0 +1,11 @@
+name: my_conda_local
+channels:
+  - conda-forge
+  - anaconda
+  - defaults
+
+dependencies:
+  - jupyter_contrib_nbextensions=0.5.0
+  - nb_conda_kernels=2.1.0
+  - holoviews=1.10.7
+  - bokeh=0.13.0

@@ -1,44 +1,24 @@
 version: "3.7"
 
-volumes:
-  postgres_data:
-
 services:
-  skepsi:
-    image: skepsi:local
-    depends_on:
-      - postgres
+  helpers:
+    image: helpers:local
     build:
       context: .
       dockerfile: Dockerfile.local
-    container_name: skepsi-container
-    entrypoint: "/skepsi/init.sh"
+    container_name: helpers-container
+    entrypoint: "/helpers/init.sh"
     env_file:
       - secrets/env-local
-      - secrets/env-${USER}
     ports:
       # src:dest (src=port on container, dest=port on host machine)
       - "7741:7740" # Port for Jupyter notwbook
-      - "8080:8080" # Map port for airflow webserver
-      - "2222:22"   # Map port for openssh
-      - "8050:8050" # For dash app
       - "8889:8889" # For jupyter lab
+      - "2222:22"   # Map port for openssh
     volumes:
       - type: bind
         source: ${JUPYTER_HOME_LOCAL}
         target: ${JUPYTER_HOME_IMAGE}
       - type: bind
         source: "."
-        target: "/skepsi"
-
-  postgres:
-    image: postgres:9.6-alpine
-    container_name: postgres
-    env_file:
-      - secrets/env-local
-    ports:
-      - "5432:5432"
-    volumes:
-      - type: volume
-        source: postgres_data
-        target: /var/lib/postgresql/data
+        target: "/helpers"

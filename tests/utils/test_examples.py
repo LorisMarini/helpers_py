@@ -1,5 +1,5 @@
-from skepsi.utils.utils import *
-from skepsi.utils.imports import *
+from helpers.utils import *
+from helpers.imports import *
 
 # Get test data
 testdata = [(datetime(2001, 12, 12), datetime(2001, 12, 11), timedelta(1)),

@@ -1,0 +1,69 @@
+# --------------------- BASE START --------------------
+FROM continuumio/miniconda3:4.6.14-alpine
+
+# --------------------- ROOT --------------------------
+# Switch to root user ID
+USER 0
+
+# hadolint ignore=DL3018
+RUN apk --no-cache add \
+  wget \
+  bzip2 \
+  ca-certificates \
+  build-base \
+  curl \
+  git \
+  htop \
+  unzip \
+  vim \
+  libpq \
+  bash \
+  bind-tools \
+  jq \
+  openssh \
+  sudo \
+  util-linux \
+  openssl \
+  grep
+
+# Add directory to mount external disk
+RUN mkdir -p /etl \
+  && chown anaconda:anaconda /etl \
+  && mkdir -p /helpers \
+  && chown anaconda:anaconda /helpers
+
+RUN echo "anaconda ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+# --------------------- ANACONDA --------------------------
+
+# Install conda dependencies
+# Switch to Anaconda user ID (see their Dockerfile)
+USER anaconda
+
+COPY --chown=anaconda:anaconda ./docker /helpers/docker
+
+# Installing conda dependencies for base layer
+RUN /opt/conda/bin/conda env update -n "base" --file "/helpers/docker/conda_one.yml"
+
+# Prepare ssh to talk to github
+# Create a .sshdirectory, add a file of known hosts, and add github
+RUN mkdir "/home/anaconda/.ssh" \
+  && touch "/home/anaconda/.ssh/known_hosts" \
+  && ssh-keyscan github.com >> "/home/anaconda/.ssh/known_hosts"
+
+# --------------------- BASE END -----------------------
+# --------------------- LOCAL --------------------------
+
+# Install conda dependencies for layer one
+RUN /opt/conda/bin/conda env update -n "base" --file "/helpers/docker/conda_two.yml" --verbose
+
+# Add conda dependencies for local environment
+RUN /opt/conda/bin/conda env update -n "base" --file "/helpers/docker/conda_local.yml" --verbose
+
+# Install pip dependencies (only for packages that cannot be found with conda)
+RUN /opt/conda/bin/pip install -r "/helpers/docker/pip_dependencies.txt" --progress-bar on
+
+WORKDIR /helpers
+
+# Launch Airflow
+CMD ["tail", "-f", "/dev/null"]

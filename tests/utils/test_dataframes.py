@@ -1,4 +1,4 @@
-from skepsi.utils.etl import *
+from helpers.etl import *
 
 
 def etl_object_1(*, bid, filename):

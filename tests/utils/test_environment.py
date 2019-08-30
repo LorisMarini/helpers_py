@@ -1,5 +1,5 @@
-from skepsi.utils.utils import *
-from skepsi.utils.imports import *
+from helpers.utils import *
+from helpers.imports import *
 
 
 def test_environment(log=False):
@@ -15,16 +15,16 @@ def test_environment(log=False):
     return True
 
 
-# json_env_variable_to_file(env_name, filename=None)
+# TODO json_env_variable_to_file(env_name, filename=None)
 
-# set_python_env_from_file(filename)
+# TODO set_python_env_from_file(filename)
 
-# show_env_values_and_types()
+# TODO show_env_values_and_types()
 
-# cloudant_creds()
+# TODO cloudant_creds()
 
-# env_get(env, required=True)
+# TODO env_get(env, required=True)
 
-# etl_remote_home(bucket_name="GS")
+# TODO etl_remote_home(bucket_name="GS")
 
-# etl_local_home()
+# TODO etl_local_home()

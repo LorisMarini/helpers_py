@@ -1,5 +1,5 @@
-from skepsi.utils.utils import check_type
-from skepsi.utils.imports import *
+from helpers.utils import check_type
+from helpers.imports import *
 
 
 def initialize_logger(name='root', level='INFO', file_handler=None, console_level=None):

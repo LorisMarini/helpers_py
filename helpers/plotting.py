@@ -1,4 +1,4 @@
-from skepsi.utils.utils import *
+from helpers.utils import *
 
 
 def plot_mono_variate_fit(fit, fig_size=[5, 3], saveas=None, verbose=False, thresholds=None):

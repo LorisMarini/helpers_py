@@ -1,5 +1,5 @@
-from skepsi.utils.utils import *
-from skepsi.utils.imports import *
+from helpers.utils import *
+from helpers.imports import *
 
 
 def test_obj_serialize(tmpdir, buckets, list_numeric, dataframe_1):

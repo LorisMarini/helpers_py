@@ -3,7 +3,7 @@ File containing all fixtures used in different test files.
 NOTE: This file name must be conftest.py as detailed here:
 https://docs.pytest.org/en/latest/fixture.html#conftest-py-sharing-fixture-functions
 """
-from skepsi.utils.etl import *
+from helpers.etl import *
 
 
 @pytest.fixture(scope="session")
@@ -82,4 +82,3 @@ def list_numeric():
 @pytest.fixture(scope="session")
 def buckets():
     return airflow_bucket_from_id()
-

@@ -14,6 +14,16 @@ To setup transcrypt simple run
 
 `decrypt-secrets.sh MYSECRET` replacing MYSECRET as appropriate. To see what is being encrypted, cd into the repo and type `git ls-crypt`. To change this, modify the file `.gitattributes`.
 
+## Dependencies
+
+The Python environment is manages via the package manager **conda**. The environment files are in `/docker`, and are divided into three sections, to make the most of docker layer caching and speed up builds
+
+**conda_one.yml** contains all packages that passed the test of time and are always used in the base image
+**conda_two.yml** contains packages that are being evaluated
+**conda_local.yml** has additional packages which are useful to prototype but should not be part of the remote image
+
+Each file is applyed to the base conda environment with commands of the type `/opt/conda/bin/conda env update -n "base" --file "/helpers/docker/conda_two.yml"` (see Dockerfile for some examples). 
+
 ## Local Deployment
 For local deployments the root directory of the repo is mounted inside the image at `/helpers`, and the package installed in editing mode with `pip install -e /helpers_py`. This allows to makes changes in your favourite IDE (Pycharm) and have them immediately available in your REPL session.
 

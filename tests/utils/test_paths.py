@@ -1,6 +1,6 @@
-from skepsi.utils.utils import *
-from skepsi.utils.imports import *
-from skepsi.utils.etl import *
+from helpers.utils import *
+from helpers.imports import *
+from helpers.etl import *
 
 
 def test_path_exists(file_local, dir_local):
@@ -60,14 +60,12 @@ def test_paths(tmpdir, buckets, list_numeric):
     for dir in dirs:
         path_describe(dirname=dir, sort_by="size", ascending=False, minimal=True, extensions=[], attribute=False, log=True)
 
-# path_describe_many(dirlist, minimal=True, sort_by="size", ascending=False, log=True, extensions=[])
+# TODO path_describe_many(dirlist, minimal=True, sort_by="size", ascending=False, log=True, extensions=[])
 
+# TODO path_consolidate(file_abs_path)
 
-# path_consolidate(file_abs_path)
+# TODO path_dirs_from_paths(paths, log=True)
 
-# path_dirs_from_paths(paths, log=True)
+# TODO path_bucket_id(path)
 
-# path_bucket_id(path)
-
-
-# path_splitext(path)
+# TODO path_splitext(path)

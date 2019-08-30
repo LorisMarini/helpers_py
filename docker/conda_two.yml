@@ -1,0 +1,11 @@
+name: my_conda_two
+channels:
+  - conda-forge
+  - anaconda
+  - defaults
+
+dependencies:
+  - pymongo=3.8.0
+  - dnspython=1.16.0
+  - dash=0.41.0
+  - plotly=4.0.0
