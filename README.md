@@ -22,7 +22,7 @@ The Python environment is manages via the package manager **conda**. The environ
 **conda_two.yml** contains packages that are being evaluated
 **conda_local.yml** has additional packages which are useful to prototype but should not be part of the remote image
 
-Each file is applyed to the base conda environment with commands of the type `/opt/conda/bin/conda env update -n "base" --file "/helpers/docker/conda_two.yml"` (see Dockerfile for some examples). 
+Each file is applyed to the base conda environment with commands of the type `/opt/conda/bin/conda env update -n "base" --file "/helpers/docker/conda_two.yml"` (see Dockerfile for some examples).
 
 ## Local Deployment
 For local deployments the root directory of the repo is mounted inside the image at `/helpers`, and the package installed in editing mode with `pip install -e /helpers_py`. This allows to makes changes in your favourite IDE (Pycharm) and have them immediately available in your REPL session.
@@ -46,3 +46,12 @@ This is useful when the environment file `env-local` changes.
 The testing framework of choice is **pytest**, and all files are in `/tests`. For a
 detailed breakdown of what is covered check out the index.html file in
 `/tests/pytest-coverage` :D
+
+Assuming that you have a local conda environment activated and loaded with the necessary dependencies, cd into the repo and fire pytest manually:
+
+    pytest -v \
+          --cov=. \
+          --cov-config=.coveragerc \
+          --cov-report html:./tests/pytest-coverage\
+          --disable-pytest-warnings \
+          --basetemp=./tests/pytest-basetemp .
