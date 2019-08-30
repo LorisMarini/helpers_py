@@ -4,11 +4,10 @@
 set -a
 source ./secrets/env-local
 # shellcheck disable=SC1090
-source ./secrets/env-${USER}
 set +a
 
 # Name of the repo
-REPOSITORY_BASE_NAME="skepsi"
+REPOSITORY_BASE_NAME="helpers"
 
 function countdown() {
   secs=$1
@@ -89,11 +88,11 @@ function exec_tasks {
       docker-compose exec $REPOSITORY_BASE_NAME sh -l -c \
       "/opt/conda/bin/pytest \
       -v \
-      --cov=/skepsi \
-      --cov-config=/skepsi/.coveragerc \
-      --cov-report html:/skepsi/tests/pytest-coverage\
+      --cov=/helpers \
+      --cov-config=/helpers/.coveragerc \
+      --cov-report html:/helpers/tests/pytest-coverage\
       --disable-pytest-warnings \
-      --basetemp=/skepsi/tests/pytest-basetemp /skepsi"
+      --basetemp=/helpers/tests/pytest-basetemp /helpers"
     else
       docker-compose exec $REPOSITORY_BASE_NAME sh -l
     fi

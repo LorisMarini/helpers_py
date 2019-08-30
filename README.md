@@ -6,35 +6,25 @@ and model** data.
 
 ## Secrets
 
-This repo uses [transcrypt](https://github.com/elasticdog/transcrypt) to transparently
-encrypt/decrypt sensitive information with **aes-256-cbc** cypher (test password is `LorisMarini`). All the secrets
-needed to talk to the rest of the world (**Slack, Claudant, Google Sheet, Google BigQuery, S3, GCS,** ...)
-are stored in `/secrets`. During remote deployment in a node/cluster, the decryption
-key can be read from an authenticated bucket (e.g. Amazon S3). Transcrypt is included
-as a submodule, so to clone the repo use:
+This repo uses [transcrypt](https://github.com/elasticdog/transcrypt) to transparently encrypt/decrypt sensitive information with **aes-256-cbc** cypher (test password is `LorisMarini`). All the secrets needed to talk to the rest of the world (**Slack, Claudant, Google Sheet, Google BigQuery, S3, GCS,** ...) are stored in `/secrets`. During remote deployment in a node/cluster, the decryption key can be read from an authenticated bucket (e.g. Amazon S3). Transcrypt is included as a submodule, so to clone the repo use:
 
-`git clone --recurse-submodules https://github.com/LorisMarini/helpers_py.git`
+`git clone --recurse-submodules https://github.com/LorisMarini/helpers.git`
 
 To setup transcrypt simple run
 
-`decrypt-secrets.sh MYSECRET` replacing MYSECRET as appropriate.
+`decrypt-secrets.sh MYSECRET` replacing MYSECRET as appropriate. To see what is being encrypted, cd into the repo and type `git ls-crypt`. To change this, modify the file `.gitattributes`.
 
 ## Local Deployment
-For local deployments the root directory of the repo is mounted inside the image
-at `/helpers_py`, and the package installed in editing mode with `pip install -e /helpers_py`.
-This allows to makes changes in your favourite IDE (Pycharm) and have them immediately
-available in your REPL session.
+For local deployments the root directory of the repo is mounted inside the image at `/helpers`, and the package installed in editing mode with `pip install -e /helpers_py`. This allows to makes changes in your favourite IDE (Pycharm) and have them immediately available in your REPL session.
 
 1. Run `build.sh` to build the docker image locally
 2. Run `exec.sh` to execute into the container. Optionally use the -r switch to
-kill and recreate the containers from scratch (useful to propagate env changes).
-Try running a jupyter notebook with with:
 
-`./jupyter.sh`
+kill and recreate the containers from scratch (useful to propagate env changes). Try running a jupyter notebook at http://localhost:7040 (token is **ds**)
 
-the notebook UI appears at http://localhost:7040, token is 'ds'. When deployed
-locally airflow uses a local postgreSQL database and the localExecutor. All dependencies
-are handled via docker-compose in the `docker-compose.yml` file. To run locally,
+`./notebook.sh`
+
+All dependencies are handled via docker-compose in the `docker-compose.yml` file. To run locally,
 simply cd into the repo directory and run:
 
 `./exec.sh -r`

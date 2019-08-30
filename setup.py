@@ -1,8 +1,8 @@
 import setuptools
 from setuptools import setup
 
-setup(name='helpers_py',
-      version='0.1',
+setup(name='helpers',
+      version='0.2',
       description='Tools for data analysis and data engineering',
       url='https://github.com/LorisMarini/helpers_py.git',
       author='Loris Marini',

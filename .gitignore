@@ -1,3 +1,6 @@
+# Pycharm metadata
+.idea
+
 # Ignore basetemp used by pytest
 /tests/pytest-basetemp/*
 /tests/pytest-coverage/*
