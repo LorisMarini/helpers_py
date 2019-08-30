@@ -6,13 +6,14 @@ and model** data.
 
 ## Secrets
 
-This repo uses transcrypt to transparently encrypt/decrypt sensitive information.
-All secrets used to talk to the rest of the world (**Slack, Claudant, Google Sheet,
-  Google BigQuery, S3, GCS,** ...) are stored in `/secrets`. During remote deployment
-  in a node/cluster, the decryption key can be read from an authenticated bucket
-  (e.g. Amazon S3). Transcrypt is included as a submodule, so to clone the repo use:
+This repo uses [transcrypt](https://github.com/elasticdog/transcrypt) to transparently
+encrypt/decrypt sensitive information. All secrets used to talk to the rest of
+the world (**Slack, Claudant, Google Sheet, Google BigQuery, S3, GCS,** ...) are
+stored in `/secrets`. During remote deployment in a node/cluster, the decryption
+key can be read from an authenticated bucket (e.g. Amazon S3). Transcrypt is included
+as a submodule, so to clone the repo use:
 
-`git clone --recurse-submodules https://github.com/autopilothq/skepsi.git`
+`git clone --recurse-submodules https://github.com/LorisMarini/helpers_py.git`
 
 To setup transcrypt simple run
 
