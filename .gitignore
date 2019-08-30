@@ -1,20 +1,6 @@
-/node_modules/*
-
 # Ignore basetemp used by pytest
 /tests/pytest-basetemp/*
 /tests/pytest-coverage/*
-
-# Airflow configuration
-/airflow/unittests.cfg
-
-# Airflow sqlite databases
-/airflow/airflow.db
-/airflow/unittests.db
-
-# Airflow temporary artifacts
-/airflow/logs/
-/airflow/airflow-webserver*
-/airflow/airflow-scheduler*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
